@@ -26,7 +26,8 @@ export default createClass({
     propTypes: {
         children: PropTypes.oneOfType([
             PropTypes.string,
-            PropTypes.func
+            PropTypes.func,
+            PropTypes.object
         ]),
         text: PropTypes.string,
         min: PropTypes.number,
@@ -200,7 +201,23 @@ export default createClass({
     },
 
     render() {
-        const { children, text, style, min, max, mode, ...props } = this.props;
+        const {
+            children,
+            text,
+            style,
+            min,
+            max,
+            mode,
+            forceWidth,
+            forceSingleModeWidth,
+            perfectFit,
+            /* eslint-disable no-shadow */
+            throttle,
+            /* eslint-enable no-shadow */
+            autoResize,
+            onReady,
+            ...props
+        } = this.props;
         const { fontSize, ready } = this.state;
         const finalStyle = {
             ...style,
